@@ -39,7 +39,7 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col">
             <span className="font-sans text-sm font-bold tracking-wider text-foreground uppercase">
-              Cottonleap
+              Cottonleaps
             </span>
             <span className="text-[9px] font-mono text-accent tracking-widest uppercase">OS v3.2</span>
           </div>
