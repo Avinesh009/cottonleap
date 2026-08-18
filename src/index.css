@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 152 40% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 152 40% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 152 40% 8%;
+
+    --primary: 190 90% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 8% 93%;
+    --secondary-foreground: 152 40% 12%;
+
+    --muted: 150 6% 92%;
+    --muted-foreground: 152 10% 45%;
+
+    --accent: 152 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 150 10% 88%;
+    --input: 150 10% 88%;
+    --ring: 190 90% 50%;
+
+    --radius: 0.5rem;
+
+    /* Custom tokens */
+    --neon-cyan: 190 90% 50%;
+    --neon-blue: 220 90% 60%;
+    --neon-green: 152 80% 50%;
+    --forest: 152 55% 10%;
+    --forest-foreground: 0 0% 98%;
+    --lab-white: 0 0% 98%;
+    --hero-gradient: linear-gradient(135deg, hsl(152, 55%, 6%) 0%, hsl(152, 40%, 10%) 50%, hsl(152, 55%, 6%) 100%);
+    --glass-bg: hsla(0, 0%, 100%, 0.7);
+    --glass-border: hsla(152, 20%, 30%, 0.1);
+    --glass-shine: hsla(0, 0%, 100%, 0.5);
+    --surface-elevated: 0 0% 100%;
+    --sage: 120 10% 95%;
+    --sage-deep: 120 12% 92%;
+
+    --sidebar-background: 152 55% 6%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 190 90% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 40% 14%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 152 30% 18%;
+    --sidebar-ring: 190 90% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+
+  /* Forest green section */
+  .bg-forest {
+    background-color: hsl(var(--forest));
+    color: hsl(var(--forest-foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0.75rem;
+  }
+
+  .glass-strong {
+    background: hsla(152, 55%, 8%, 0.9);
+    border: 1px solid hsla(152, 40%, 30%, 0.2);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 0.75rem;
+  }
+
+  /* Dark glass for forest sections */
+  .glass-dark {
+    background: hsla(152, 40%, 12%, 0.6);
+    border: 1px solid hsla(152, 40%, 40%, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 0.75rem;
+  }
+
+  .section-divider {
+    position: relative;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(152, 60%, 45%), hsl(190, 90%, 50%), transparent);
+    opacity: 0.3;
+  }
+
+  .section-divider::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, hsla(152, 60%, 45%, 0.15), transparent);
+    filter: blur(4px);
+  }
+
+  .neon-glow-cyan {
+    box-shadow: 0 0 15px hsla(190, 90%, 50%, 0.2), 0 0 60px hsla(190, 90%, 50%, 0.05);
+  }
+
+  .neon-glow-green {
+    box-shadow: 0 0 10px hsla(152, 80%, 50%, 0.3), 0 0 40px hsla(152, 80%, 50%, 0.08);
+  }
+
+  .neon-text-cyan {
+    color: hsl(190, 90%, 50%);
+    text-shadow: 0 0 10px hsla(190, 90%, 50%, 0.3);
+  }
+
+  .neon-text-green {
+    color: hsl(152, 80%, 50%);
+    text-shadow: 0 0 8px hsla(152, 80%, 50%, 0.3);
+  }
+
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(190, 90%, 50%), transparent);
+    animation: scan-down 3s ease-in-out infinite;
+    box-shadow: 0 0 20px hsla(190, 90%, 50%, 0.5), 0 0 60px hsla(190, 90%, 50%, 0.2);
+  }
+
+  /* Glitch hover effect */
+  .glitch-hover {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .glitch-hover:hover {
+    text-shadow: 
+      2px 0 hsl(190, 90%, 50%),
+      -2px 0 hsl(340, 80%, 55%);
+    animation: glitch-text 0.3s ease forwards;
+  }
+
+  .glitch-hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, hsla(190, 90%, 50%, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+  }
+
+  .glitch-hover:hover::before {
+    transform: translateX(100%);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsla(152, 20%, 30%, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(152, 20%, 30%, 0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .grid-bg-dark {
+    background-image: 
+      linear-gradient(hsla(152, 40%, 60%, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(152, 40%, 60%, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .bg-sage {
+    background-color: hsl(var(--sage));
+  }
+
+  .grid-bg-sage {
+    background-image: 
+      linear-gradient(hsla(152, 20%, 40%, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsla(152, 20%, 40%, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .card-elevated {
+    background: hsl(0, 0%, 100%);
+    border: 1px solid hsla(152, 15%, 70%, 0.2);
+    box-shadow: 0 4px 24px -4px hsla(152, 30%, 20%, 0.06), 0 1px 3px hsla(152, 20%, 30%, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0.75rem;
+  }
+
+  .section-fade-sage {
+    background: linear-gradient(to bottom, hsl(0, 0%, 98%) 0%, hsl(120, 10%, 95%) 100%);
+    height: 120px;
+  }
+
+  .section-fade-sage-out {
+    background: linear-gradient(to bottom, hsl(120, 10%, 95%) 0%, hsl(0, 0%, 98%) 100%);
+    height: 120px;
+  }
+}
+
+@keyframes scan-down {
+  0%, 100% { top: -2px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes glitch-text {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0); }
+}
